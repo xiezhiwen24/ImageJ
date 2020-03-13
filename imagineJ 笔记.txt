@@ -1,0 +1,217 @@
+#第11节
+Z stack processing: Z Project
+范例：Confocal Series
+Imagine/Stacks/Z project……Max intensity
+应用：流场分析
+#第12节
+范例：Bat Cochlea Volumn Rendering
+Imagine/hyperstacks/Temporal-Color Code（？没有）……Grays
+应用于time series
+#第13节
+Hyperstack:
+超过3个Dimension的stack
+范例：Mitosis 5D
+SD:X Y slices channels frames
+C:channels  Z:slices
+调整速度
+Image/Stacks/Animation/Animation Options……
+把图片合并成RGB：Color/Stack to RGB
+制成Gif档
+缩减Dimension
+Image/Hyperstack/Reduce Dimensionality……
+File/Save as……gif
+#第14节(Stacks与Image之间可以互相转换）
+Imagine/Stacks/Imagines to Stack
+Imagine/Stacks/Stack to Images
+Imagine/Stacks/Orthogonal Views
+Imagine/Stacks/Make Montage
+Imagine/Stacks/3D Project
+#第15节影像长度的校正
+Analyze/Set Scale
+用Edit/Properities……检查
+比例尺校正
+Global勾选 所有开放的影像都用同样的比例尺
+按着alt，status bar可以显示原始资料
+TIFF格式可以储存比例尺资讯
+#第16节
+显微校正
+Analyze/Set Scale
+开放Global
+#第17节 标注影像Scale Bar
+第18节
+Image thresholding
+[grayscale]
+Image/Adjust/Threshold……
+Dark backgroun荧光照片才需要
+Edit/Selection/Create Mask or APPLY
+#第19节
+[color image]
+RGB image or Multichannel image
+Image/Type/HSB stack
+Image/Adjust/Color Threshold……
+#第20节
+Area Selection
+类型：Rectangles、Ovals、Polygons、Freehand
+右键红色小箭头有其他选取区
+按着shift可以做正方形、圆形
+按着ctrl，移动控制点 可从中间扩展
+按着alt，移动控制点  可等比例
+shift加入选取区、alt减去选取区
+多变形的处理，如何增加或者减少控制点
+按着ctrl,点击控制点，可以减少控制点
+按着shift，点击控制点，可分裂增加控制点
+移动选取区：滑鼠移动到选取区内部，drag and drop
+选取区回复: Edit/Selection/Restor Selection
+#第21节（图形的变换）
+Edit/Selection
+#第22节
+选取区用处
+Image/Crop
+Edit/Invert
+Edit/Fill
+Edit/Draw
+Edit/Options/Color
+Edit/Options/line Width
+#第23、24、25节
+Region of Interest（ROIS）
+把选取区加入ROI Manager
+Analyze/Tools/ROI Manager……Add
+Edit/Selection/Add to Manager
+ROI可以储存，储存的副档名roi.zip（ROI Manager/more）
+ROI的圈选区颜色更改
+#第26节
+Round shape：ellipses ovals
+Shape descriptors
+circularity（Circ.）
+roundeness（Round）
+aspect ratio（AR）
+solidity（Solidity）
+用处detect particles
+#第27节
+用pixel inspector讲解
+#第28节
+Set Measurements/display label
+#第29节
+Wand tools
+用blobs练习
+Polygon Selection
+Double Click 开放Tolerance
+#第30节
+Line Selections
+类型：Stright line Segmented line angle tool
+Shift按着拉直线，可以锁定角度，画出固定角度的直线
+#第31、32节
+Point Selcetion
+single tool
+multi point tool
+应用：手动计数（cell counter Plugins）  调整颜色  alt键删除控制点
+#第33、34、35节（略）
+#第36、37、38、39、40节
+Particle(测量面积与数量）
+开放Blobs
+Image/Adjust Threshold
+Edit/Selection/Create Mask
+#第41节
+影像二元化运算
+Process/Binary/
+watershedding
+范例Blobs
+erode与dilate
+filling holes
+skeletoniziong
+第42节（略）
+第43节
+Manual Tracking
+用moving-particle.tif当范例
+Plugin/Tracking/MTrackj
+Add增加点
+Ctrl continue
+Shift reverse
+Hide
+shift-hide all track
+ctrl-show all track
+delete
+ctrl All track
+第44节
+Automatic Particle Tracking
+需要白色背景，黑色前景的8bit binary
+Image/Type/8bit
+Image/Adjust/Threshold/--勾Dark Background --Apply
+Plugins/Tracking/MTrack2
+测量物体大小
+第45节
+光谱测量校正
+Analyze/Tools/Curve Fitting
+第46节 overlay的应用  ROI Manager
+第47节 如何安装macros和plugins（外挂，最重要）
+http://rsb.info.nih.gov/ij/macros/
+找出画出最长径的Macros
+第48、49、50、51节（略）
+Tiff格式可储存stack（最好是这个格式）
+Montage组图
+第52节：用光谱仪+分光光度计+imagej测量橘子汁的吸光值与透光率
+拍摄不同浓度溶液的光谱、校正用光谱
+将image做成stack
+利用省电灯泡的光谱来校正影像的X坐标
+用Analyze/Tool/Curve fitting计算出X坐标的校正公式
+以20%为例
+计算T=透射光强度/入射光强度
+Process/Image calculator
+      浓度20% divide 湿度00（空白）
+     32-bit float
+计算A=-logT
+     Process/Math/log
+     Process/Math/multiply-1
+或是用
+     Process/Math/Macro 
+        v=-log（v）
+Analyze/Plot Profile取得数值，复制到计算表去处理
+####ctrl+A,ctrl+k得出数值
+第53、54、55、56、57节 处理NEO的日温、夜温、和日夜温差图
+Image/Stack/Tools/Concatenate
+Image/Hyperstack/Re-order Hyperstack
+Image/Adjust/Windows level
+Image/Lookup Table/Fire
+Image/Stacks/plot Z-axis profile
+ROI Manager
+MultiMeasure
+测量某处不同月份的日夜温差
+Image/Stacks/plot Z-axis profile
+第58节 用校色卡进行灰阶校正
+第59、60节 进行像素值的加减乘除运算
+第61节 热像温度仪处理
+第62节ImageJ 自动圈选细胞、计算细胞面积与体积
+安装plugin
+  3D Object counter
+  http://imagejdocu.tudor.lu/doku.php?id=plugin:analysis:3d_object_counter:start
+   3D Roi Manager
+  http://imagejdocu.tudor.lu/doku.php?id=plugin:analysis:3d_roi_manager:start
+汇入档案
+进行比例尺校正
+用3D Viewer
+使用3D Object counter
+使用3D Roi Manager
+第63节 平均切割四等分、计算二元化（二元化是指黑和白两种）黑色面积
+第64节 分析眼白的血管覆盖面积
+第65节 计算axon beading
+第66节 分析细胞面积、细胞膜颜色很淡怎么办（手动加入边界）
+第67节 ROI Manager分析肌肉比例
+第68、69节 ROI Manager选取不用颜色的组织
+第70节 分析硬骨面积比例
+第71节 InageJ配合weka机器学习plugin做segmentation侦测叶片气孔位置裁切出单图
+第72、73、74、75节 分析薄膜干涉的颜色与厚度
+第76节 Macro做细胞追踪Cell Tracking
+ 第77、78节 将分散的小区块用二值化影像处理流程做群组
+第79节 利用手动划线-半手动分割细胞
+第80节 用Macro将影像的ROI都各自存图（Make Montage）
+第81节 处理脉搏影片 （Plot Z-axis Profile）
+第82节 分离色频后选取区域（Lab Stack）
+第83节 trackmate 分析细胞移动轨迹和位移距离
+第84节 外挂PAT-GEOM介绍与安装
+第85、86节 影像分割植物
+第87、88、89节 colab机器学习分割细胞
+第90、91、92、93节 显微追焦 手动标记
+调整gif的速度Animation/Animation Options（非常重要）
+第94、95、96节   制作灰阶影像加彩色线条的视觉效果
+第97节 自动校正省电灯泡光谱并产生其他照片的光谱分析
+
